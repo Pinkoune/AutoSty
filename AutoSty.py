@@ -9,6 +9,7 @@ customtkinter.set_default_color_theme("dark-blue")
 
 #Création fenêtre
 root = customtkinter.CTk()
+root.title("AutoSty")
 root.geometry("400x510")
 
 frame = customtkinter.CTkFrame(master=root)
@@ -65,7 +66,6 @@ def scriptRY1():
     pyautogui.typewrite("OK")
     for i in range(6):
         pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
     time.sleep(1)
@@ -96,9 +96,8 @@ def scriptRY1():
     pyautogui.typewrite(support.get())
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
-    time.sleep(1.5)
+    time.sleep(2)
 
     pyautogui.click(249,203, duration=0.1)
     time.sleep(2)
@@ -131,7 +130,6 @@ def scriptOB1():
     pyautogui.typewrite("NOK")
     for i in range(6):
         pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
     time.sleep(1)
@@ -168,9 +166,8 @@ def scriptOB1():
     pyautogui.typewrite(support2.get())
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
-    time.sleep(1.5)
+    time.sleep(2)
 
     pyautogui.click(249,203, duration=0.1)
     time.sleep(2)
@@ -203,7 +200,6 @@ def scriptDevis():
     pyautogui.typewrite("NOK")
     for i in range(6):
         pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
     pyautogui.click(249,203, duration=0.1)
