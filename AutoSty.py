@@ -9,7 +9,7 @@ customtkinter.set_default_color_theme("dark-blue")
 
 #Création fenêtre
 root = customtkinter.CTk()
-root.geometry("600x500")
+root.geometry("400x510")
 
 frame = customtkinter.CTkFrame(master=root)
 support = customtkinter.StringVar(root)
@@ -17,7 +17,7 @@ support2 = customtkinter.StringVar(root)
 commentaire = customtkinter.StringVar(root)
 commentaire2 = customtkinter.StringVar(root)
 pitLog = customtkinter.IntVar(root)
-clavier = customtkinter.IntVar(root)
+current_function = None
 
 #Menu principal
 def Menu():
@@ -39,12 +39,19 @@ def Menu():
     buttonDevis = customtkinter.CTkButton(master=frame, text="Devis", command=Devis)
     buttonDevis.pack(pady=12, padx=10)
 
+    keyboard.clear_all_hotkeys()
+
+#Selection du raccourcis clavier selon la page
+def on_hotkey():
+    if current_function:
+        current_function()
+
 #Script RY1
 def scriptRY1():
     time.sleep(2)
     pyautogui.click(865,360, duration=0.1, button="right")
     pyautogui.moveTo(1017,770, duration=0.1)
-    time.sleep(0.7)
+    time.sleep(1)
     pyautogui.click(1305,770, duration=0.1)
     time.sleep(1.5)
     pyautogui.click(791,477, duration=0.1)
@@ -58,6 +65,7 @@ def scriptRY1():
     pyautogui.typewrite("OK")
     for i in range(6):
         pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
     time.sleep(1)
@@ -88,6 +96,7 @@ def scriptRY1():
     pyautogui.typewrite(support.get())
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     time.sleep(1.5)
 
@@ -100,6 +109,8 @@ def scriptRY1():
 
 #Script OB1
 def scriptOB1():
+    global current_function
+    current_function = scriptOB1
     time.sleep(2)
     pyautogui.click(865,360, duration=0.1, button="right")
     pyautogui.moveTo(1017,770, duration=0.1)
@@ -120,6 +131,7 @@ def scriptOB1():
     pyautogui.typewrite("NOK")
     for i in range(6):
         pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
     time.sleep(1)
@@ -156,6 +168,7 @@ def scriptOB1():
     pyautogui.typewrite(support2.get())
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     time.sleep(1.5)
 
@@ -168,6 +181,8 @@ def scriptOB1():
 
 #Script Devis
 def scriptDevis():
+    global current_function
+    current_function = scriptDevis
     time.sleep(2)
     pyautogui.click(865,360, duration=0.1, button="right")
     pyautogui.moveTo(1017,770, duration=0.1)
@@ -188,6 +203,7 @@ def scriptDevis():
     pyautogui.typewrite("NOK")
     for i in range(6):
         pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
     pyautogui.click(249,203, duration=0.1)
@@ -220,8 +236,12 @@ def RY1():
     buttonOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptRY1)
     buttonOK.pack(pady=12, padx=10)
 
-    if clavier == 1:
-        keyboard.add_hotkey("ctrl + alt + w", buttonOK.invoke)
+    labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
+    labelHotkey.pack(pady=1, padx=1)
+
+    global current_function
+    current_function = scriptRY1
+    keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
 
 #Frame OB1
 def OB1():
@@ -257,8 +277,12 @@ def OB1():
     buttonNOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptOB1)
     buttonNOK.pack(pady=12, padx=10)
 
-    if clavier == 2:
-        keyboard.add_hotkey("ctrl + alt + x", buttonNOK.invoke)
+    labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
+    labelHotkey.pack(pady=1, padx=1)
+
+    global current_function
+    current_function = scriptOB1
+    keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
 
 #Frame Devis
 def Devis():
@@ -283,11 +307,12 @@ def Devis():
     buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptDevis)
     buttonDevis.pack(pady=12, padx=10)
 
-    if clavier == 3:
-        keyboard.add_hotkey("ctrl + alt + c", buttonDevis.invoke)
+    labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
+    labelHotkey.pack(pady=1, padx=1)
 
-    #buttonOK.focus_set()
-    #root.bind("<Control-Alt-w>", lambda event: buttonOK.invoke())
+    global current_function
+    current_function = scriptDevis
+    keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
     
 
 
@@ -305,7 +330,5 @@ buttonOB1.pack(pady=12, padx=10)
 
 buttonDevis = customtkinter.CTkButton(master=frame, text="Devis", command=Devis)
 buttonDevis.pack(pady=12, padx=10)
-
-clavier = 0
 
 root.mainloop()
