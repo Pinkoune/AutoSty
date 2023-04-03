@@ -70,7 +70,7 @@ def scriptRY1():
 
     pyautogui.typewrite("RY1")
     pyautogui.hotkey("tab")
-    pyautogui.typewrite("Operationnel")
+    keyboard.write("Opérationnel")
     for i in range(5):
         pyautogui.hotkey("tab")
     pyautogui.hotkey("space")
@@ -112,7 +112,8 @@ def scriptOB1():
     pyautogui.hotkey("tab")
     pyautogui.typewrite("Poste NOK")
     pyautogui.hotkey("tab")
-    pyautogui.typewrite(commentaire.get())
+    text = commentaire.get()
+    keyboard.write(text)
     for i in range(6):
         pyautogui.hotkey("tab")
 
@@ -131,7 +132,7 @@ def scriptOB1():
 
     pyautogui.typewrite("OB1")
     pyautogui.hotkey("tab")
-    pyautogui.typewrite("Obsolete")
+    keyboard.write("Obsolète")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.typewrite("BROKE")
@@ -179,7 +180,8 @@ def scriptDevis():
     pyautogui.hotkey("tab")
     pyautogui.typewrite("Poste NOK")
     pyautogui.hotkey("tab")
-    pyautogui.typewrite(commentaire2.get())
+    text2 = commentaire2.get()
+    keyboard.write(text2)
     for i in range(6):
         pyautogui.hotkey("tab")
 
