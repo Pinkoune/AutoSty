@@ -90,7 +90,7 @@ def script750():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     scriptRY1()
@@ -127,7 +127,6 @@ def scriptRY1():
         pyautogui.typewrite(support3.get())
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     time.sleep(2)
     if current_function == script750:
@@ -149,7 +148,7 @@ def script751():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("NOK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     scriptOB1()
@@ -189,7 +188,6 @@ def scriptOB1():
         pyautogui.typewrite(support2.get())
     elif current_function == scriptReparation:
         pyautogui.typewrite(support3.get())
-    pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
@@ -258,7 +256,7 @@ def Script111():
         pyautogui.typewrite("OK")
     else:
         pyautogui.typewrite("NOK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
@@ -316,7 +314,7 @@ def scriptReparation():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     StartPos()
