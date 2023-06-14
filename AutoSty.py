@@ -58,23 +58,23 @@ def on_hotkey():
     if current_function:
         current_function()
 
-#Position souris du début
+#Position souris du début DIDIER
 def StartPos():
     time.sleep(2)
-    pyautogui.click(865,360, duration=0.1, button="right")
-    pyautogui.moveTo(1017,770, duration=0.1)
+    pyautogui.click(877,404, duration=0.1, button="right")
+    pyautogui.moveTo(1090,900, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(1305,770, duration=0.1)
-    time.sleep(1.5)
-    pyautogui.click(791,477, duration=0.1)
-
-#Position souris à la fin
-def endPos():
-    pyautogui.click(249,203, duration=0.1)
+    pyautogui.click(1390,900, duration=0.1)
     time.sleep(2)
-    pyautogui.click(1902,170, duration=0.1)
-    pyautogui.click(130,458, duration=0.3)
-    pyautogui.click(130,458, duration=0)
+    pyautogui.click(947,555, duration=0.1)
+
+#Position souris à la fin DIDIER
+def endPos():
+    pyautogui.click(303,225, duration=0.1)
+    time.sleep(2)
+    pyautogui.click(1817,180, duration=0.1)
+    pyautogui.click(161,534, duration=0.3)
+    pyautogui.click(161,534, duration=0)
     pyautogui.hotkey('backspace')
 
 #Script 750
@@ -127,7 +127,6 @@ def scriptRY1():
         pyautogui.typewrite(support.get())
     elif current_function == scriptReparation:
         pyautogui.typewrite(support3.get())
-    pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
@@ -259,7 +258,7 @@ def Script111():
         pyautogui.typewrite("OK")
     else:
         pyautogui.typewrite("NOK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
@@ -317,7 +316,7 @@ def scriptReparation():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     StartPos()
