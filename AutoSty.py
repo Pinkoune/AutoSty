@@ -120,11 +120,14 @@ def scriptRY1():
         if (pitLog3.get() == 1):
             pyautogui.hotkey("down")
     pyautogui.hotkey("tab")
+    if check_var.get() =="on":
+        pyautogui.hotkey("space")
     pyautogui.hotkey("tab")
     if current_function == script750:
         pyautogui.typewrite(support.get())
     elif current_function == scriptReparation:
         pyautogui.typewrite(support3.get())
+    pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
@@ -221,7 +224,7 @@ def scriptDevis():
 def Script111():
     pyautogui.typewrite("111")
     pyautogui.hotkey("tab")
-    if comboboxPlacement_var == "RY1":
+    if comboboxPlacement_var.get() == "RY1":
         pyautogui.typewrite("Poste OK")
     else:
         pyautogui.typewrite("Poste NOK")
@@ -252,11 +255,11 @@ def Script111():
 
     for i in range(6):
         pyautogui.hotkey("tab")
-    if comboboxPlacement_var == "RY1":
+    if comboboxPlacement_var.get() == "RY1":
         pyautogui.typewrite("OK")
     else:
         pyautogui.typewrite("NOK")
-    for i in range(6):
+    for i in range(7):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
@@ -314,7 +317,7 @@ def scriptReparation():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(6):
+    for i in range(7):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     StartPos()
@@ -325,12 +328,6 @@ def scriptReparation():
 
     elif comboboxPlacement_var.get() == "RY1":
         scriptRY1()
-
-        if check_var.get() =="on":
-            pyautogui.click(865,360, duration=0.1, button="right")
-            pyautogui.moveTo(1017,770, duration=0.1)
-            time.sleep(0.7)
-            pyautogui.click(1305,800, duration=0.1)
 
     endPos()
 
