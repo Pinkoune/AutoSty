@@ -58,7 +58,7 @@ def on_hotkey():
     if current_function:
         current_function()
 
-#Position souris du début DIDIER
+#Position souris du début ALEX
 def StartPos():
     time.sleep(2)
     pyautogui.click(860,415, duration=0.1, button="right")
@@ -68,7 +68,7 @@ def StartPos():
     time.sleep(2)
     pyautogui.click(928,554, duration=0.1)
 
-#Position souris à la fin DIDIER
+#Position souris à la fin ALEX
 def endPos():
     pyautogui.click(303,226, duration=0.1)
     time.sleep(2)
