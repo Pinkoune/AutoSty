@@ -120,7 +120,7 @@ def scriptRY1():
         if (pitLog3.get() == 1):
             pyautogui.hotkey("down")
     pyautogui.hotkey("tab")
-    if check_var.get() =="on":
+    if check_var.get() =="on" and current_function == scriptReparation:
         pyautogui.hotkey("space")
     pyautogui.hotkey("tab")
     if current_function == script750:
