@@ -20,6 +20,7 @@ support3 = customtkinter.StringVar(root)
 commentaire = customtkinter.StringVar(root)
 commentaire2 = customtkinter.StringVar(root)
 check_var = customtkinter.StringVar(root)
+check_varRY1 = customtkinter.StringVar(root)
 combobox_var = customtkinter.StringVar(root)
 comboboxPlacement_var = customtkinter.StringVar(root)
 
@@ -90,7 +91,7 @@ def script750():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(6):
+    for i in range(7):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     scriptRY1()
@@ -120,7 +121,9 @@ def scriptRY1():
         if (pitLog3.get() == 1):
             pyautogui.hotkey("down")
     pyautogui.hotkey("tab")
-    if check_var.get() =="on":
+    if check_var.get() =="on" and current_function == scriptReparation:
+        pyautogui.hotkey("space")
+    elif check_varRY1.get() =="on" and current_function == script750:
         pyautogui.hotkey("space")
     pyautogui.hotkey("tab")
     if current_function == script750:
@@ -259,7 +262,7 @@ def Script111():
         pyautogui.typewrite("OK")
     else:
         pyautogui.typewrite("NOK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
@@ -283,7 +286,7 @@ def scriptReparation():
             pyautogui.hotkey("tab")
             pyautogui.typewrite("Cover OK")
         case "SSD":
-            pyautogui.typewrite("PO7")
+            pyautogui.typewrite("P07")
             pyautogui.hotkey("tab")
             pyautogui.typewrite("SSD OK")
         case "Clavier":
@@ -317,7 +320,7 @@ def scriptReparation():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     StartPos()
@@ -356,6 +359,9 @@ def RY1():
 
     log = customtkinter.CTkRadioButton(master=frame, text="en LOG", variable=pitLog, value=1)
     log.pack(pady=12, padx=10)
+
+    checkbox = customtkinter.CTkCheckBox(master=frame, text="Etiquette", variable=check_varRY1, onvalue="on", offvalue="off")
+    checkbox.pack(pady=12, padx=10)
 
     buttonOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=script750)
     buttonOK.pack(pady=12, padx=10)
