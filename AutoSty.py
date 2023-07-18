@@ -59,23 +59,23 @@ def on_hotkey():
     if current_function:
         current_function()
 
-#Position souris du début ALEX
+#Position souris du début HONORE
 def StartPos():
     time.sleep(2)
-    pyautogui.click(860,415, duration=0.1, button="right")
-    pyautogui.moveTo(1037,912, duration=0.1)
+    pyautogui.click(865,395, duration=0.1, button="right")
+    pyautogui.moveTo(1017,807, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(1375,912, duration=0.1)
+    pyautogui.click(1305,807, duration=0.1)
     time.sleep(2)
-    pyautogui.click(928,554, duration=0.1)
+    pyautogui.click(740,510, duration=0.1)
 
 #Position souris à la fin ALEX
 def endPos():
-    pyautogui.click(303,226, duration=0.1)
+    pyautogui.click(240,250, duration=0.1)
     time.sleep(2)
-    pyautogui.click(1722,183, duration=0.1)
-    pyautogui.click(145,533, duration=0.3)
-    pyautogui.click(145,533, duration=0)
+    pyautogui.click(1902,213, duration=0.1)
+    pyautogui.click(130,495, duration=0.3)
+    pyautogui.click(130,495, duration=0)
     pyautogui.hotkey('backspace')
 
 #Script 750
