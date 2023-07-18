@@ -91,7 +91,7 @@ def script750():
         pyautogui.hotkey("tab")
 
     pyautogui.typewrite("OK")
-    for i in range(7):
+    for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     scriptRY1()
@@ -130,7 +130,6 @@ def scriptRY1():
         pyautogui.typewrite(support.get())
     elif current_function == scriptReparation:
         pyautogui.typewrite(support3.get())
-    pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
