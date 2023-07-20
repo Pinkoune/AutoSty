@@ -1,4 +1,7 @@
 import customtkinter
+import tkinter
+from tkinter import *
+
 import pyautogui
 import keyboard
 import time
@@ -12,8 +15,10 @@ root = customtkinter.CTk()
 root.title("AutoSty")
 root.geometry("400x600")
 
+# Fenêtre principale
 frame = customtkinter.CTkFrame(master=root)
 
+# Variables générales
 support = customtkinter.StringVar(root)
 support2 = customtkinter.StringVar(root)
 support3 = customtkinter.StringVar(root)
@@ -24,6 +29,11 @@ check_varRY1 = customtkinter.StringVar(root)
 combobox_var = customtkinter.StringVar(root)
 comboboxPlacement_var = customtkinter.StringVar(root)
 
+# Variables pour la liste
+entry = customtkinter.StringVar()
+listbox = Listbox
+
+# Variables pour le support
 pitLog = customtkinter.IntVar(root)
 pitLog2 = customtkinter.IntVar(root)
 pitLog3 = customtkinter.IntVar(root)
@@ -54,10 +64,12 @@ def Menu():
 
     keyboard.clear_all_hotkeys()
 
-#Selection du raccourcis clavier selon la page
+# Selection du raccourcis clavier selon la page
 def on_hotkey():
     if current_function:
         current_function()
+
+# ----------------------------------------------------------------------------------------------
 
 #Position souris du début HONORE
 def StartPos():
@@ -78,7 +90,57 @@ def endPos():
     pyautogui.click(130,495, duration=0)
     pyautogui.hotkey('backspace')
 
-#Script 750
+# Position souris pour la liste HONORE
+def ListPos():
+    pyautogui.click(130,495, duration=0.3)
+    pyautogui.click(130,495, duration=0)
+    pyautogui.hotkey('backspace')
+
+# ----------------------------------------------------------------------------------------------
+
+# Ajout du poste dans la liste
+def add_text():
+    text = entry.get()
+    if text:
+        listbox.insert(tkinter.END, text)
+        entry.delete(0, tkinter.END)
+# Ajout du poste dans la liste avec touche entrer
+def add_textEvent(e):
+    text = entry.get()
+    if text:
+        listbox.insert(tkinter.END, text)
+        entry.delete(0, tkinter.END)
+
+# Lancement des script avec la liste
+def scriptListe():
+    for index in range(listbox.size()):
+        item = listbox.get(index)
+        time.sleep(1)
+        ListPos()
+        keyboard.write(item)
+        time.sleep(1)
+        pyautogui.hotkey('enter')
+        time.sleep(0.3)
+        pyautogui.hotkey('enter')
+        time.sleep(2.5)
+        if current_function == script750:
+            script750()
+        elif current_function == script751:
+            script751()
+        elif current_function == scriptDevis:
+            scriptDevis()
+
+    # Fenetre de complétion d'insertion de la liste
+    FinishWindow = customtkinter.CTkToplevel(root)
+    FinishWindow.grab_set()
+    FinishWindow.title("Autosty - terminé")
+    FinishWindow.geometry("300x300")
+    label2 = customtkinter.CTkLabel(FinishWindow, text="Insertion terminée")
+    label2.pack(pady=10, padx=10)
+    button = customtkinter.CTkButton(FinishWindow, text="Fermer", command=FinishWindow.destroy, fg_color='green',hover_color='darkgreen')
+    button.pack(pady=5, padx=5)
+
+# Script 750
 def script750():
     global current_function
     current_function = script750
@@ -96,7 +158,7 @@ def script750():
     pyautogui.hotkey('enter')
     scriptRY1()
 
-#Script RY1
+# Script RY1
 def scriptRY1():
 
     StartPos()
@@ -137,7 +199,7 @@ def scriptRY1():
     if current_function == script750:
         endPos()
 
-#Script 751
+# Script 751
 def script751():
     global current_function
     current_function = script751
@@ -158,7 +220,7 @@ def script751():
     pyautogui.hotkey('enter')
     scriptOB1()
 
-#Script OB1
+# Script OB1
 def scriptOB1():
 
     StartPos()
@@ -200,7 +262,7 @@ def scriptOB1():
     if current_function == script751:
         endPos()
 
-#Script Devis
+# Script Devis
 def scriptDevis():
     global current_function
     current_function = scriptDevis
@@ -219,10 +281,11 @@ def scriptDevis():
     for i in range(6):
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
+    time.sleep(1)
 
     endPos()
 
-#Script 111
+# Script 111
 def Script111():
     pyautogui.typewrite("111")
     pyautogui.hotkey("tab")
@@ -265,7 +328,7 @@ def Script111():
         pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
 
-#Script Reparation
+# Script Reparation
 def scriptReparation():
     global current_function
     current_function = scriptReparation
@@ -333,9 +396,9 @@ def scriptReparation():
 
     endPos()
 
-#Frame RY1
+# Frame RY1
 def RY1():
-    #Nettoyage de la frame
+    # Nettoyage de la frame
     for widget in frame.winfo_children():
         widget.destroy()
 
@@ -362,7 +425,10 @@ def RY1():
     checkbox = customtkinter.CTkCheckBox(master=frame, text="Etiquette", variable=check_varRY1, onvalue="on", offvalue="off")
     checkbox.pack(pady=12, padx=10)
 
-    buttonOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=script750)
+    buttonListe = customtkinter.CTkButton(master=frame, text="Insertion groupée", command=openlistWindow)
+    buttonListe.pack(pady=12, padx=10)
+
+    buttonOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=script750, fg_color='#d11128',hover_color='#6a0915')
     buttonOK.pack(pady=12, padx=10)
 
     labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
@@ -372,9 +438,9 @@ def RY1():
     current_function = script750
     keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
 
-#Frame OB1
+# Frame OB1
 def OB1():
-    #Nettoyage de la frame
+    # Nettoyage de la frame
     for widget in frame.winfo_children():
         widget.destroy()
 
@@ -403,7 +469,10 @@ def OB1():
     log = customtkinter.CTkRadioButton(master=frame, text="en LOG", variable=pitLog2, value=1)
     log.pack(pady=12, padx=10)
 
-    buttonNOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=script751)
+    buttonListe = customtkinter.CTkButton(master=frame, text="Insertion groupée", command=openlistWindow)
+    buttonListe.pack(pady=12, padx=10)
+
+    buttonNOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=script751, fg_color='#d11128',hover_color='#6a0915')
     buttonNOK.pack(pady=12, padx=10)
 
     labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
@@ -413,9 +482,9 @@ def OB1():
     current_function = script751
     keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
 
-#Frame Devis
+# Frame Devis
 def Devis():
-    #Nettoyage de la frame
+    # Nettoyage de la frame
     for widget in frame.winfo_children():
         widget.destroy()
 
@@ -433,7 +502,10 @@ def Devis():
     entry1 = customtkinter.CTkEntry(master=frame, textvariable=commentaire2)
     entry1.pack(pady=12, padx=10)
 
-    buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptDevis)
+    buttonListe = customtkinter.CTkButton(master=frame, text="Insertion groupée", command=openlistWindow)
+    buttonListe.pack(pady=12, padx=10)
+
+    buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptDevis, fg_color='#d11128',hover_color='#6a0915')
     buttonDevis.pack(pady=12, padx=10)
 
     labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
@@ -443,9 +515,9 @@ def Devis():
     current_function = scriptDevis
     keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
 
-#Frame Reparation
+# Frame Reparation
 def Reparation():
-    #Nettoyage de la frame
+    # Nettoyage de la frame
     for widget in frame.winfo_children():
         widget.destroy()
 
@@ -482,7 +554,7 @@ def Reparation():
     checkbox = customtkinter.CTkCheckBox(master=frame, text="Etiquette", variable=check_var, onvalue="on", offvalue="off")
     checkbox.pack(pady=12, padx=10)
 
-    buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptReparation)
+    buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptReparation, fg_color='#d11128',hover_color='#6a0915')
     buttonDevis.pack(pady=12, padx=10)
 
     labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
@@ -491,9 +563,54 @@ def Reparation():
     global current_function
     current_function = scriptReparation
     keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
+
+# Nouvelle fenêtre pour la liste
+def openlistWindow():
+    global entry, listbox
+     
+    # Toplevel Créer une nouvelle fenêtre et grab_set la laisse en premier plan
+    listWindow = customtkinter.CTkToplevel(root)
+    listWindow.grab_set()
+
+    # Nom de la fenêtre
+    listWindow.title("AutoSty - Liste de postes")
+
+    # Taille de la fenêtre
+    listWindow.geometry("400x500")
+
+    # Titre
+    if current_function == script750:
+        lab = "Liste de postes - RY1"
+    elif current_function == script751:
+        lab = "Liste de postes - OB1"
+    elif current_function == scriptDevis:
+        lab = "Liste de postes - Devis"
+    label2 = customtkinter.CTkLabel(listWindow, text=lab)
+    label2.pack(pady=10, padx=10)
+
+    # Créer le widget Entry pour saisir le texte
+    entry = customtkinter.CTkEntry(listWindow)
+    entry.pack(pady=1, padx=1)
+
+    # Créer le widget Button pour ajouter le texte à la liste
+    button = customtkinter.CTkButton(listWindow, text="Ajouter", command=add_text)
+    button.pack(pady=5, padx=5)
+
+    # Appuyer sur entrer pour ajouter le texte à la liste
+    listWindow.bind('<Return>',add_textEvent)
+
+    # Créer le widget Listbox pour afficher la liste de texte
+    listbox = Listbox(listWindow, bg="#212121", fg="white")
+    listbox.pack(pady=1, padx=1)
+
+    buttonListe = customtkinter.CTkButton(listWindow, text="Lancer le script", command=scriptListe, fg_color='#d11128',hover_color='#6a0915')
+    buttonListe.pack(pady=10, padx=10)
+
+    labelPrev = customtkinter.CTkLabel(listWindow, text="(Ne pas oublier Reflex dans le champ de vision)")
+    labelPrev.pack(pady=1, padx=1)
     
 
-#Frame principale
+# Frame principale
 frame.pack(pady=20, padx=60, fill="both", expand=True)
 
 label = customtkinter.CTkLabel(master=frame, text="AutoSty - Menu")
