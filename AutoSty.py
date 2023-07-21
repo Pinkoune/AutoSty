@@ -71,29 +71,29 @@ def on_hotkey():
 
 # ----------------------------------------------------------------------------------------------
 
-# Position souris du début
+# Position souris du début ALEX.M
 def StartPos():
     time.sleep(2)
-    pyautogui.click(865,360, duration=0.1, button="right")
-    pyautogui.moveTo(1017,770, duration=0.1)
+    pyautogui.click(670,393, duration=0.1, button="right")
+    pyautogui.moveTo(1090,728, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(1305,770, duration=0.1)
+    pyautogui.click(1310,728, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(791,477, duration=0.1)
+    pyautogui.click(800,460, duration=0.1)
 
-# Position souris à la fin
+# Position souris à la fin ALEX.M
 def endPos():
-    pyautogui.click(249,203, duration=0.1)
+    pyautogui.click(382,271, duration=0.1)
     time.sleep(2)
-    pyautogui.click(1902,170, duration=0.1)
-    pyautogui.click(130,458, duration=0.3)
-    pyautogui.click(130,458, duration=0)
+    pyautogui.click(1739,240, duration=0.1)
+    pyautogui.click(281,447, duration=0.3)
+    pyautogui.click(281,447, duration=0)
     pyautogui.hotkey('backspace')
 
-# Position souris pour la liste
+# Position souris pour la liste ALEX.M
 def ListPos():
-    pyautogui.click(130,458, duration=0.3)
-    pyautogui.click(130,458, duration=0)
+    pyautogui.click(281,447, duration=0.3)
+    pyautogui.click(281,447, duration=0)
     pyautogui.hotkey('backspace')
 
 # ----------------------------------------------------------------------------------------------
