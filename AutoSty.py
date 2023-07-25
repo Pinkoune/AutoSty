@@ -28,6 +28,7 @@ check_var = customtkinter.StringVar(root)
 check_varRY1 = customtkinter.StringVar(root)
 combobox_var = customtkinter.StringVar(root)
 comboboxPlacement_var = customtkinter.StringVar(root)
+comboboxQualite_var = customtkinter.StringVar(root)
 
 # Variables pour la liste
 entry = customtkinter.StringVar()
@@ -205,7 +206,10 @@ def script751():
     current_function = script751
 
     StartPos()
-    pyautogui.typewrite("751")
+    if comboboxQualite_var.get() == "751":
+        pyautogui.typewrite("751")
+    elif comboboxQualite_var.get() == "755":
+        pyautogui.typewrite("755")
     pyautogui.hotkey("tab")
     pyautogui.typewrite("Poste NOK")
     pyautogui.hotkey("tab")
@@ -462,6 +466,11 @@ def OB1():
     label2.pack(pady=2, padx=2)
     entry1 = customtkinter.CTkEntry(master=frame, textvariable=support2)
     entry1.pack(pady=12, padx=10)
+
+    comboboxQualite = customtkinter.CTkComboBox(master=frame, values=["751", "755"],
+                                                variable=comboboxQualite_var)
+    comboboxQualite_var.set("751")
+    comboboxQualite.pack(pady=12, padx=10)
 
     pit = customtkinter.CTkRadioButton(master=frame, text="en PIT", variable=pitLog2, value=0)
     pit.pack(pady=12, padx=10)
