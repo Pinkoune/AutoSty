@@ -22,13 +22,20 @@ frame = customtkinter.CTkFrame(master=root)
 support = customtkinter.StringVar(root)
 support2 = customtkinter.StringVar(root)
 support3 = customtkinter.StringVar(root)
+support4 = customtkinter.StringVar(root)
+supportBouseNep = customtkinter.StringVar(root)
 commentaire = customtkinter.StringVar(root)
 commentaire2 = customtkinter.StringVar(root)
+commentaireBouse = customtkinter.StringVar(root)
+commentaireBouseNep = customtkinter.StringVar(root)
 check_var = customtkinter.StringVar(root)
 check_varRY1 = customtkinter.StringVar(root)
+check_var_bouse = customtkinter.StringVar(root)
 combobox_var = customtkinter.StringVar(root)
+combobox_var_bouse = customtkinter.StringVar(root)
 comboboxPlacement_var = customtkinter.StringVar(root)
 comboboxQualite_var = customtkinter.StringVar(root)
+qualite = customtkinter.StringVar(root)
 
 # Variables pour la liste
 entry = customtkinter.StringVar()
@@ -38,6 +45,7 @@ listbox = Listbox
 pitLog = customtkinter.IntVar(root)
 pitLog2 = customtkinter.IntVar(root)
 pitLog3 = customtkinter.IntVar(root)
+pitLogBouse = customtkinter.IntVar(root)
 current_function = None
 
 #Menu principal
@@ -62,6 +70,34 @@ def Menu():
 
     buttonReparation = customtkinter.CTkButton(master=frame, text="Réparation", command=Reparation)
     buttonReparation.pack(pady=12, padx=10)
+
+    buttonBouse = customtkinter.CTkButton(master=frame, text="Projet Bouse", command=MenuBouse, fg_color='#c86c29',hover_color='#804418')
+    buttonBouse.pack(pady=12, padx=10)
+
+    keyboard.clear_all_hotkeys()
+
+#Menu Bouse
+def MenuBouse():
+    #Nettoyage de la frame
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+    frame.pack(pady=20, padx=60, fill="both", expand=True)
+
+    label = customtkinter.CTkLabel(master=frame, text="AutoSty - Projet Bouse")
+    label.pack(pady=20, padx=10)
+
+    buttonRY1 = customtkinter.CTkButton(master=frame, text="Réparable", command=BouseRep, fg_color='#c86c29',hover_color='#683714')
+    buttonRY1.pack(pady=12, padx=10)
+
+    buttonOB1 = customtkinter.CTkButton(master=frame, text="Non réparable", command=BouseNep, fg_color='#c86c29',hover_color='#683714')
+    buttonOB1.pack(pady=12, padx=10)
+
+    buttonDevis = customtkinter.CTkButton(master=frame, text="Réparé", command=BouseR, fg_color='#c86c29',hover_color='#683714')
+    buttonDevis.pack(pady=12, padx=10)
+
+    buttonRY1 = customtkinter.CTkButton(master=frame, text="Retour menu", command=Menu)
+    buttonRY1.pack(pady=12, padx=10)
 
     keyboard.clear_all_hotkeys()
 
@@ -400,6 +436,199 @@ def scriptReparation():
 
     endPos()
 
+# Script Bouse réparable
+def scriptBouseRep():
+    global current_function
+    current_function = scriptBouseRep
+
+    StartPos()
+    pyautogui.typewrite("751")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("Poste NOK")
+    pyautogui.hotkey("tab")
+    textBouse = commentaireBouse.get()
+    keyboard.write(textBouse)
+    for i in range(6):
+        pyautogui.hotkey("tab")
+
+    pyautogui.typewrite("NOK")
+    for i in range(6):
+        pyautogui.hotkey("tab")
+    pyautogui.hotkey('enter')
+    time.sleep(1)
+
+    endPos()
+
+# Script Bouse Non réparable
+def scriptBouseNep():
+    global current_function
+    current_function = scriptBouseNep
+    StartPos()
+    pyautogui.typewrite("OB1")
+    pyautogui.hotkey("tab")
+    keyboard.write("Obsolète")
+    pyautogui.hotkey("tab")
+    text = commentaireBouseNep.get()
+    keyboard.write(text)
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("DEEE")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("DEEE")           
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("CAS")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("Sortie SAV")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("space")
+    time.sleep(0.4)
+    pyautogui.hotkey("tab")
+    if (pitLogBouse.get() == 1):
+            pyautogui.hotkey("down")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite(supportBouseNep.get())
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey('enter')
+    time.sleep(2)
+    endPos()
+
+# Script Bouse Réparé (Projet PE)
+def scriptBouseR():
+    global current_function
+    current_function = scriptBouseR
+
+    if qualite.get() == "LVPO4N" or qualite.get() == "LVPO4Q" or qualite.get() == "LVPO4W":
+        time.sleep(2)
+        pyautogui.click(865,360, duration=0.1, button="right")
+        pyautogui.moveTo(1000,460, duration=0.1)
+        time.sleep(1.5)
+        pyautogui.click(1288,573, duration=0.1)
+        time.sleep(1.5)
+        pyautogui.click(278,647, duration=0.3)
+        pyautogui.click(278,647, duration=0)
+        pyautogui.hotkey('backspace')
+        time.sleep(1.5)
+        
+        if qualite.get() == "LVPO4N":
+            pyautogui.typewrite("LVPO8B")
+        elif qualite.get() == "LVPO4Q":
+            pyautogui.typewrite("LVPO8C")
+        elif qualite.get() == "LVPO4W":
+            pyautogui.typewrite("LVPO8D")
+        pyautogui.hotkey("tab")
+        pyautogui.hotkey("tab")
+        pyautogui.hotkey("tab")
+        pyautogui.hotkey("tab")
+        pyautogui.typewrite("ART")
+        pyautogui.hotkey("tab")
+        pyautogui.typewrite("AM")
+        for i in range(6):
+            pyautogui.hotkey("tab")
+        pyautogui.hotkey('enter')
+
+    StartPos()
+    pyautogui.typewrite("111")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("Poste OK")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("RUN")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("RUN")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("OK")
+    for i in range(6):
+        pyautogui.hotkey("tab")
+    pyautogui.hotkey('enter')
+
+    StartPos()
+    match combobox_var_bouse.get():
+        case "RAM":
+            pyautogui.typewrite("P02")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("RAM OK")
+        case "Ventilateur":
+            pyautogui.typewrite("P04")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Ventilateur OK")
+        case "Cover":
+            pyautogui.typewrite("P06")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Cover OK")
+        case "SSD":
+            pyautogui.typewrite("P08")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("SSD OK")
+        case "Clavier":
+            pyautogui.typewrite("P10")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Clavier OK")
+        case "Ecran":
+            pyautogui.typewrite("P12")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Ecran OK")
+        case "Lecteur de carte":
+            pyautogui.typewrite("P14")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Lecteur de carte OK")
+        case "Touchpad":
+            pyautogui.typewrite("P16")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Touchpad OK")
+        case "Batterie":
+            pyautogui.typewrite("P18")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Batterie OK")
+        case "Speaker":
+            pyautogui.typewrite("P20")
+            pyautogui.hotkey("tab")
+            pyautogui.typewrite("Speaker OK")
+        case _:
+            return 'Aucune panne selectionnée'
+
+    for i in range(7):
+        pyautogui.hotkey("tab")
+
+    pyautogui.typewrite("OK")
+    for i in range(6):
+        pyautogui.hotkey("tab")
+    pyautogui.hotkey('enter')
+
+    StartPos()
+    pyautogui.typewrite("RY1")
+    pyautogui.hotkey("tab")
+    keyboard.write("Opérationnel")
+    for i in range(5):
+        pyautogui.hotkey("tab")
+    pyautogui.hotkey("space")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite("Sortie SAV")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("space")
+    time.sleep(0.4)
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("down")
+    pyautogui.hotkey("tab")
+    if check_var_bouse.get() =="on":
+        pyautogui.hotkey("space")
+    pyautogui.hotkey("tab")
+    pyautogui.typewrite(support4.get())
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey("tab")
+    pyautogui.hotkey('enter')
+    time.sleep(1.5)
+
+    endPos()
+
 # Frame RY1
 def RY1():
     # Nettoyage de la frame
@@ -573,6 +802,120 @@ def Reparation():
     current_function = scriptReparation
     keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
 
+# Frame Bouse Réparable
+def BouseRep():
+    # Nettoyage de la frame
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+    frame.pack(pady=20, padx=60, fill="both", expand=True)
+    clavier = 3
+
+    label2 = customtkinter.CTkLabel(master=frame, text="AutoSty - Bouse Réparable")
+    label2.pack(pady=20, padx=10)
+
+    buttonRY1 = customtkinter.CTkButton(master=frame, text="Retour menu", command=MenuBouse, fg_color='#c86c29',hover_color='#683714')
+    buttonRY1.pack(pady=12, padx=10)
+
+    label2 = customtkinter.CTkLabel(master=frame, text="Commentaire")
+    label2.pack(pady=2, padx=2)
+    entry1 = customtkinter.CTkEntry(master=frame, textvariable=commentaireBouse)
+    entry1.pack(pady=12, padx=10)
+
+    buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptBouseRep, fg_color='#d11128',hover_color='#6a0915')
+    buttonDevis.pack(pady=12, padx=10)
+
+    labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
+    labelHotkey.pack(pady=1, padx=1)
+
+    global current_function
+    current_function = BouseRep
+    keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
+
+# Frame Bouse Non réparable
+def BouseNep():
+    # Nettoyage de la frame
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+    frame.pack(pady=20, padx=60, fill="both", expand=True)
+    clavier = 2
+
+    label2 = customtkinter.CTkLabel(master=frame, text="AutoSty - Bouse Non réparable")
+    label2.pack(pady=20, padx=10)
+
+    buttonRY1 = customtkinter.CTkButton(master=frame, text="Retour menu", command=MenuBouse, fg_color='#c86c29',hover_color='#683714')
+    buttonRY1.pack(pady=12, padx=10)
+
+    label2 = customtkinter.CTkLabel(master=frame, text="Commentaire")
+    label2.pack(pady=2, padx=2)
+    entry1 = customtkinter.CTkEntry(master=frame, textvariable=commentaireBouseNep)
+    entry1.pack(pady=12, padx=10)
+
+    label2 = customtkinter.CTkLabel(master=frame, text="Numéro de support")
+    label2.pack(pady=2, padx=2)
+    entry1 = customtkinter.CTkEntry(master=frame, textvariable=supportBouseNep)
+    entry1.pack(pady=12, padx=10)
+
+    pit = customtkinter.CTkRadioButton(master=frame, text="en LOG", variable=pitLogBouse, value=0)
+    pit.pack(pady=12, padx=10)
+
+    log = customtkinter.CTkRadioButton(master=frame, text="en PIT", variable=pitLogBouse, value=1)
+    log.pack(pady=12, padx=10)
+
+    buttonNOK = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptBouseNep, fg_color='#d11128',hover_color='#6a0915')
+    buttonNOK.pack(pady=12, padx=10)
+
+    labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
+    labelHotkey.pack(pady=1, padx=1)
+
+    global current_function
+    current_function = scriptBouseNep
+    keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
+
+# Frame Bouse Réparé
+def BouseR():
+    # Nettoyage de la frame
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+    frame.pack(pady=20, padx=60, fill="both", expand=True)
+    clavier = 3
+
+    label2 = customtkinter.CTkLabel(master=frame, text="AutoSty - Réparé")
+    label2.pack(pady=20, padx=10)
+
+    buttonRY1 = customtkinter.CTkButton(master=frame, text="Retour menu", command=MenuBouse, fg_color='#c86c29',hover_color='#683714')
+    buttonRY1.pack(pady=12, padx=10)
+
+    combobox = customtkinter.CTkComboBox(master=frame, values=["Choisir panne", "RAM", "Ventilateur", "Cover", "SSD", "Clavier", "Ecran", "Lecteur de carte", "Touchpad", "Batterie", "Speaker"],
+                                        variable=combobox_var_bouse)
+    combobox_var_bouse.set("Choisir panne")
+    combobox.pack(pady=12, padx=10)
+
+    label3 = customtkinter.CTkLabel(master=frame, text="Numéro de qualité")
+    label3.pack(pady=2, padx=2)
+    entry2 = customtkinter.CTkEntry(master=frame, textvariable=qualite)
+    entry2.pack(pady=12, padx=10)
+
+    label2 = customtkinter.CTkLabel(master=frame, text="Numéro de support")
+    label2.pack(pady=2, padx=2)
+    entry1 = customtkinter.CTkEntry(master=frame, textvariable=support4)
+    entry1.pack(pady=12, padx=10)
+
+    checkbox = customtkinter.CTkCheckBox(master=frame, text="Etiquette", variable=check_var_bouse, onvalue="on", offvalue="off")
+    checkbox.pack(pady=12, padx=10)
+
+    buttonDevis = customtkinter.CTkButton(master=frame, text="Lancer le script", command=scriptBouseR, fg_color='#d11128',hover_color='#6a0915')
+    buttonDevis.pack(pady=12, padx=10)
+
+    labelHotkey = customtkinter.CTkLabel(master=frame, text="Ou utilisez Ctrl+Alt+W")
+    labelHotkey.pack(pady=1, padx=1)
+
+    global current_function
+    current_function = scriptBouseR
+    keyboard.add_hotkey("ctrl + alt + w", on_hotkey)
+
 # Nouvelle fenêtre pour la liste
 def openlistWindow():
     global entry, listbox
@@ -636,5 +979,8 @@ buttonDevis.pack(pady=12, padx=10)
 
 buttonReparation = customtkinter.CTkButton(master=frame, text="Réparation", command=Reparation)
 buttonReparation.pack(pady=12, padx=10)
+
+buttonBouse = customtkinter.CTkButton(master=frame, text="Projet Bouse", command=MenuBouse, fg_color='#c86c29',hover_color='#683714')
+buttonBouse.pack(pady=12, padx=10)
 
 root.mainloop()
