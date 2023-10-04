@@ -210,11 +210,8 @@ def scriptRY1():
     pyautogui.typewrite("RY1")
     pyautogui.hotkey("tab")
     keyboard.write("Opérationnel")
-    for i in range(5):
+    for i in range(7):
         pyautogui.hotkey("tab")
-    pyautogui.hotkey("space")
-    pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.typewrite("Sortie SAV")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
