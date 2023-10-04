@@ -119,7 +119,7 @@ def StartPos():
     pyautogui.click(791,477, duration=0.1)
 
 # Position souris à la fin
-def endPos():
+def EndPos():
     pyautogui.click(249,203, duration=0.1)
     time.sleep(2)
     pyautogui.click(1902,170, duration=0.1)
@@ -131,6 +131,17 @@ def endPos():
 def ListPos():
     pyautogui.click(130,458, duration=0.3)
     pyautogui.click(130,458, duration=0)
+    pyautogui.hotkey('backspace')
+
+#Position de souris pour le projet Bouse - changement code famille
+def BousePos():
+    pyautogui.click(865,360, duration=0.1, button="right")
+    pyautogui.moveTo(1000,460, duration=0.1)
+    time.sleep(1.5)
+    pyautogui.click(1288,573, duration=0.1)
+    time.sleep(1.5)
+    pyautogui.click(278,647, duration=0.3)
+    pyautogui.click(278,647, duration=0)
     pyautogui.hotkey('backspace')
 
 # ----------------------------------------------------------------------------------------------
@@ -234,7 +245,7 @@ def scriptRY1():
     pyautogui.hotkey('enter')
     time.sleep(2)
     if current_function == script750:
-        endPos()
+        EndPos()
 
 # Script 751
 def script751():
@@ -300,7 +311,7 @@ def scriptOB1():
     pyautogui.hotkey('enter')
     time.sleep(2)
     if current_function == script751:
-        endPos()
+        EndPos()
 
 # Script Devis
 def scriptDevis():
@@ -323,7 +334,7 @@ def scriptDevis():
     pyautogui.hotkey('enter')
     time.sleep(1)
 
-    endPos()
+    EndPos()
 
 # Script 111
 def Script111():
@@ -434,7 +445,7 @@ def scriptReparation():
     elif comboboxPlacement_var.get() == "RY1":
         scriptRY1()
 
-    endPos()
+    EndPos()
 
 # Script Bouse réparable
 def scriptBouseRep():
@@ -457,7 +468,7 @@ def scriptBouseRep():
     pyautogui.hotkey('enter')
     time.sleep(1)
 
-    endPos()
+    EndPos()
 
 # Script Bouse Non réparable
 def scriptBouseNep():
@@ -494,7 +505,7 @@ def scriptBouseNep():
     pyautogui.hotkey("tab")
     pyautogui.hotkey('enter')
     time.sleep(2)
-    endPos()
+    EndPos()
 
 # Script Bouse Réparé (Projet PE)
 def scriptBouseR():
@@ -503,14 +514,7 @@ def scriptBouseR():
 
     if qualite.get() == "LVPO4N" or qualite.get() == "LVPO4Q" or qualite.get() == "LVPO4W":
         time.sleep(2)
-        pyautogui.click(865,360, duration=0.1, button="right")
-        pyautogui.moveTo(1000,460, duration=0.1)
-        time.sleep(1.5)
-        pyautogui.click(1288,573, duration=0.1)
-        time.sleep(1.5)
-        pyautogui.click(278,647, duration=0.3)
-        pyautogui.click(278,647, duration=0)
-        pyautogui.hotkey('backspace')
+        BousePos()
         time.sleep(1.5)
         
         if qualite.get() == "LVPO4N":
@@ -627,7 +631,7 @@ def scriptBouseR():
     pyautogui.hotkey('enter')
     time.sleep(1.5)
 
-    endPos()
+    EndPos()
 
 # Frame RY1
 def RY1():
