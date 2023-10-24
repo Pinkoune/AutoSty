@@ -119,7 +119,7 @@ def StartPos():
     pyautogui.click(947,555, duration=0.1)
 
 #Position souris à la fin
-def endPos():
+def EndPos():
     pyautogui.click(303,225, duration=0.1)
     time.sleep(2)
     pyautogui.click(1817,180, duration=0.1)
@@ -605,11 +605,8 @@ def scriptBouseR():
     pyautogui.typewrite("RY1")
     pyautogui.hotkey("tab")
     keyboard.write("Opérationnel")
-    for i in range(5):
+    for i in range(7):
         pyautogui.hotkey("tab")
-    pyautogui.hotkey("space")
-    pyautogui.hotkey("tab")
-    pyautogui.hotkey("tab")
     pyautogui.typewrite("Sortie SAV")
     pyautogui.hotkey("tab")
     pyautogui.hotkey("tab")
