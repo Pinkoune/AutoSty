@@ -508,7 +508,7 @@ def scriptBouseR():
     global current_function
     current_function = scriptBouseR
 
-    if qualite.get() == "LVPO4N" or qualite.get() == "LVPO4Q" or qualite.get() == "LVPO4W":
+    if qualite.get() == "LVPO4N" or qualite.get() == "LVPO4Q" or qualite.get() == "LVPO4W" or qualite.get() == "HPPO69":
         time.sleep(2)
         BousePos()
         time.sleep(1.5)
@@ -519,6 +519,8 @@ def scriptBouseR():
             pyautogui.typewrite("LVPO8C")
         elif qualite.get() == "LVPO4W":
             pyautogui.typewrite("LVPO8D")
+        elif qualite.get() == "HPPO69":
+            pyautogui.typewrite("HPPOAK")
         pyautogui.hotkey("tab")
         pyautogui.hotkey("tab")
         pyautogui.hotkey("tab")
