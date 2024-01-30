@@ -74,26 +74,26 @@ def on_hotkey():
 #Position souris du début HONORE
 def StartPos():
     time.sleep(2)
-    pyautogui.click(865,395, duration=0.1, button="right")
-    pyautogui.moveTo(1017,807, duration=0.1)
+    pyautogui.click(865,420, duration=0.1, button="right")
+    pyautogui.moveTo(1017,830, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(1305,807, duration=0.1)
+    pyautogui.click(1305,830, duration=0.1)
     time.sleep(2)
-    pyautogui.click(740,510, duration=0.1)
+    pyautogui.click(740,540, duration=0.1)
 
 #Position souris à la fin HONORE
 def endPos():
-    pyautogui.click(240,250, duration=0.1)
+    pyautogui.click(240,280, duration=0.1)
     time.sleep(2)
-    pyautogui.click(1902,213, duration=0.1)
-    pyautogui.click(130,495, duration=0.3)
-    pyautogui.click(130,495, duration=0)
+    pyautogui.click(1902,242, duration=0.1)
+    pyautogui.click(130,520, duration=0.3)
+    pyautogui.click(130,520, duration=0)
     pyautogui.hotkey('backspace')
 
 # Position souris pour la liste HONORE
 def ListPos():
-    pyautogui.click(130,495, duration=0.3)
-    pyautogui.click(130,495, duration=0)
+    pyautogui.click(130,520, duration=0.3)
+    pyautogui.click(130,520, duration=0)
     pyautogui.hotkey('backspace')
 
 # ----------------------------------------------------------------------------------------------
