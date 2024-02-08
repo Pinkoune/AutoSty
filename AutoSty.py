@@ -111,35 +111,35 @@ def on_hotkey():
 # Position souris du début
 def StartPos():
     time.sleep(2)
-    pyautogui.click(1000,385, duration=0.1, button="right")
-    pyautogui.moveTo(1147,803, duration=0.1)
+    pyautogui.click(1000,400, duration=0.1, button="right")
+    pyautogui.moveTo(1147,820, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(1437,803, duration=0.1)
+    pyautogui.click(1437,820, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(784,507, duration=0.1)
+    pyautogui.click(784,523, duration=0.1)
 
 # Position souris à la fin
 def EndPos():
-    pyautogui.click(250,235, duration=0.1)
+    pyautogui.click(250,250, duration=0.1)
     time.sleep(2)
-    pyautogui.click(1900,200, duration=0.1)
-    pyautogui.click(135,490, duration=0.3)
-    pyautogui.click(135,490, duration=0)
+    pyautogui.click(1900,212, duration=0.1)
+    pyautogui.click(135,505, duration=0.3)
+    pyautogui.click(135,505, duration=0)
 
 # Position souris pour la liste
 def ListPos():
-    pyautogui.click(135,490, duration=0.3)
-    pyautogui.click(135,490, duration=0)
+    pyautogui.click(135,505, duration=0.3)
+    pyautogui.click(135,505, duration=0)
 
 #Position de souris pour le projet Bouse - changement code famille
 def BousePos():
-    pyautogui.click(1000,385, duration=0.1, button="right")
-    pyautogui.moveTo(1130,485, duration=0.1)
+    pyautogui.click(1000,400, duration=0.1, button="right")
+    pyautogui.moveTo(1130,500, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(1420,600, duration=0.1)
+    pyautogui.click(1420,610, duration=0.1)
     time.sleep(1.5)
-    pyautogui.click(283,675, duration=0.3)
-    pyautogui.click(283,675, duration=0)
+    pyautogui.click(283,690, duration=0.3)
+    pyautogui.click(283,690, duration=0)
 
 # ------------------------- POSITION DE SOURIS DE LEO -----------------------------------------
 
