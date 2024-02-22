@@ -79,7 +79,7 @@ def StartPos():
     time.sleep(1.5)
     pyautogui.click(1375,900, duration=0.1)
     time.sleep(2)
-    pyautogui.click(870,514, duration=0.1)
+    pyautogui.click(870,550, duration=0.1)
 
 #Position souris à la fin ALEX
 def endPos():
